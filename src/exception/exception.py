@@ -7,7 +7,7 @@ def erro_message_detail(error, error_detail: sys):
     file_name,exc_tb.tb_lineno,str(error)
 
 
-class Exception(Exception):
+class ExceptionCustom(Exception):
     def __init__(self,error_message,error_detail:sys):
         super().__init__(error_message,error_detail)
         self.error_message = erro_message_detail(error_message,error_detail)
