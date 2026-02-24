@@ -18,3 +18,11 @@ class DataTransformationConfig:
     transformed_test_file_path: str = os.path.join('artifacts/data_transformation', 'test.npy')
     preprocessed_object_dir:str = os.path.join('artifacts/data_transformation', 'preprocessor')
     preprocessed_object_file_path: str = os.path.join('artifacts/data_transformation/preprocessor', 'preprocessor.pkl')
+
+@dataclass
+class ModelTrainerConfig:
+    model_trainer_dir: str = os.path.join('artifacts', 'model_trainer')
+    trained_model_file_path: str = os.path.join('artifacts/model_trainer', 'model.pkl')
+    report_file_path: str = os.path.join('artifacts/model_trainer', 'report.yaml')
+
+
