@@ -7,8 +7,10 @@ from src.exception.exception import ExceptionCustom
 from src.logging.logger import logging
 from sklearn.model_selection import train_test_split
 from src.Entity.config_entity import DataIngestionConfig
+from src.Entity.artifacts_config import DataIngestionArtifact
+from src.utils.main_utils import read_csv
 
-
+@dataclass
 class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
@@ -16,7 +18,7 @@ class DataIngestion:
     def init_data_ingestion(self):
         logging.info("Entrando na Ingestão de Dados")
         try:
-            df=pd.read_csv('data\games.csv')
+            df=read_csv('data\games.csv')
             logging.info("Read Data")
 
             os.makedirs(self.ingestion_config.data_ingestion_dir,exist_ok=True)
@@ -33,15 +35,14 @@ class DataIngestion:
 
             logging.info("Data Ingestion Completo")
 
-
-            return(
-                self.ingestion_config.train_data_path,
-                self.ingestion_config.test_data_path
+            data_ingestion_artifact = DataIngestionArtifact(
+                train_file_path=self.ingestion_config.train_data_path,
+                test_file_path=self.ingestion_config.test_data_path,
+                raw_data_path=self.ingestion_config.raw_data_path
             )
+            return data_ingestion_artifact
         except Exception as e:
             raise ExceptionCustom(e,sys)
         
-if __name__=="__main__":
-    obj=DataIngestion()
-    obj.init_data_ingestion()
+
 
