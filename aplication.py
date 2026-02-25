@@ -12,7 +12,7 @@ def index():
 @app.route('/predict',methods=['GET','POST'])
 def predict_datapoint():
     if request.method=='GET':
-        return render_template('home.html', prob_white=None, prob_black=None, prob_draw=None)
+        return render_template('home.html')
     else:
         data=CustomData(
             white_rating=int(request.form.get('white_rating')),
@@ -32,5 +32,5 @@ def predict_datapoint():
     return render_template('home.html',prob_black=prob_black,prob_white=prob_white,prob_draw=prob_draw)
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0",port=5000,debug=True)
+    app.run(host="0.0.0.0",port=8080)
     

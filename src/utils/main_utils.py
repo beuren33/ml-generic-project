@@ -9,6 +9,7 @@ from sklearn.calibration import LabelEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.discriminant_analysis import StandardScaler
 from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RandomizedSearchCV
 from sklearn.preprocessing import OneHotEncoder
 import yaml
 
@@ -90,11 +91,11 @@ def evaluate_models(X_train, y_train, X_test, y_test, models,params):
             para = params[model_name]
 
             logging.info(f"Iniciando Hyperparameter Tuning para: {model_name}")
+            
+            random_search = RandomizedSearchCV(model, para, cv=3, n_iter=5, n_jobs=-1, verbose=1)
+            random_search.fit(X_train, y_train)
 
-            gs = GridSearchCV(model, para, cv=3, n_jobs=-1, verbose=1)
-            gs.fit(X_train, y_train)
-
-            model.set_params(**gs.best_params_)
+            model.set_params(**random_search.best_params_)
             model.fit(X_train, y_train)
 
             y_test_pred = model.predict(X_test)
@@ -102,7 +103,7 @@ def evaluate_models(X_train, y_train, X_test, y_test, models,params):
 
             report[model_name] = {
                 "accuracy": float(test_model_score),
-                "best_params": gs.best_params_
+                "best_params": random_search.best_params_
             }
 
         report_path = os.path.join("artifacts", "model_report.yaml")

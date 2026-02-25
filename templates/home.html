@@ -17,7 +17,7 @@
         .form-control { background-color: #2b2b2b; border: 1px solid #444; color: #fff; border-radius: 8px; }
         .form-control::placeholder { color: #cfcfcf; }
         .form-control:focus { background-color: #333; color: #fff; border-color: #0d6efd; box-shadow: none; }
-        .progress { background-color: #333; height: 10px; border-radius: 5px; margin-bottom: 15px; }
+        .progress { background-color: #333; height: 15px; border-radius: 5px; margin-bottom: 15px; }
         .progress-bar { background-color: #0dcaf0; }
     </style>
 </head>
@@ -35,7 +35,7 @@
             <div class="col-md-8">
                 <div class="form-card shadow-lg">
                     <h3 class="mb-4">Configurar Partida</h3>
-                    <form action="/predictdata" method="POST">
+                    <form action="/predict" method="POST">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Rating das Brancas (ELO)</label>
@@ -73,35 +73,28 @@
                 </div>
 
                 <div class="result-card shadow animate__animated animate__fadeIn">
-                    <h4 class="mb-4 text-center">Resultado da Análise Estatística</h4>
+                    <h4 class="mb-4 text-center">Probabilidades Estimadas</h4>
                     
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span>⚪ Vitória das Brancas</span>
-                            <span class="highlight">{{prob_white}}%</span>
+                    <div class="row text-center g-3">
+                        <div class="col-md-4">
+                            <div class="p-3 border border-secondary rounded" style="background-color: #1a1a1a;">
+                                <div class="text-secondary small mb-1 text-uppercase">Brancas</div>
+                                <div class="display-6 fw-bold highlight">{{ prob_white }}%</div>
+                            </div>
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar">{{prob_white}}%</div>
-                        </div>
-                    </div>
 
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span>⚫ Vitória das Pretas</span>
-                            <span class="highlight">{{prob_black}}%</span>
+                        <div class="col-md-4">
+                            <div class="p-3 border border-secondary rounded" style="background-color: #1a1a1a;">
+                                <div class="text-secondary small mb-1 text-uppercase">Pretas</div>
+                                <div class="display-6 fw-bold highlight">{{ prob_black }}%</div>
+                            </div>
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar">{{prob_black}}%</div>
-                        </div>
-                    </div>
 
-                    <div class="mb-0">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span>🤝 Empate</span>
-                            <span class="highlight">{{prob_draw}}%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar">{{prob_draw}}%</div>
+                        <div class="col-md-4">
+                            <div class="p-3 border border-secondary rounded" style="background-color: #1a1a1a;">
+                                <div class="text-secondary small mb-1 text-uppercase">Empate</div>
+                                <div class="display-6 fw-bold highlight">{{ prob_draw }}%</div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -6,5 +6,6 @@ matplotlib
 xgboost
 lightgbm
 PyYAML
+Flask
 
 -e .

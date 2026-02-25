@@ -46,18 +46,18 @@ class ModelTrainer:
             params = {
                 "Random Forest": {
                     "n_estimators": [50, 100],
-                    "max_depth": [10, 20, None],
+                    "max_depth": [10, 20],
                     "min_samples_split": [2, 5]
                 },
                 "Gradient Boost": {
                     "n_estimators": [100],
-                    "learning_rate": [0.1, 0.05],
-                    "max_depth": [3, 5]
+                    "learning_rate": [0.1],
+                    "max_depth": [3]
                 },
                 "Logistic Regression": {
                     "C": [0.1, 1, 10],
                     "solver": ['lbfgs'], 
-                    "max_iter": [500]
+                    "max_iter": [250]
                 },
                 "XGBoost": {
                     "n_estimators": [100, 200],
@@ -71,8 +71,8 @@ class ModelTrainer:
                     #"max_iter": [200]
                 #},
                 "AdaBoost": {
-                    "n_estimators": [50, 100],
-                    "learning_rate": [0.1, 1.0]
+                    "n_estimators": [50],
+                    "learning_rate": [0.1]
                 }
             }
 
