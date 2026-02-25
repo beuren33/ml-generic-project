@@ -17,5 +17,7 @@ phases:
       - echo Criando arquivo de deploy para o Elastic Beanstalk...
       - printf '{"AWSEBDockerrunVersion":"1","Image":{"Name":"%s.dkr.ecr.%s.amazonaws.com/%s:latest","Update":"true"},"Ports":[{"ContainerPort":5000}]}' $AWS_ACCOUNT_ID $AWS_DEFAULT_REGION $ImageName > Dockerrun.aws.json
 artifacts:
-  files:
-    - Dockerrun.aws.json
+  - application.py
+    - requirements.txt
+    - artifacts/**/* # Isso leva seus modelos .pkl
+    - templates/**/*
