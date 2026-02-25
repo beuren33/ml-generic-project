@@ -3,12 +3,12 @@ __pycache__/
 *.py[codz]
 *$py.class
 
-# C extensions
+# C extensions  
 *.so
 logs/
-artifacts/*
-!artifacts/model_trainer/model.pkl
-!artifacts/data_transformation/preprocessor/preprocessor.pkl
+test.npy
+train.npy
+artifacts/data_ingestion/*
 /.ebextension
 buildspec.yml
 # Distribution / packaging
