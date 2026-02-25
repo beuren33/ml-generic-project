@@ -5,9 +5,12 @@ __pycache__/
 
 # C extensions
 *.so
-
-/artifacts
-
+logs/
+artifacts/*
+!artifacts/model_trainer/model.pkl
+!artifacts/data_transformation/preprocessor/preprocessor.pkl
+/.ebextension
+buildspec.yml
 # Distribution / packaging
 .Python
 build/

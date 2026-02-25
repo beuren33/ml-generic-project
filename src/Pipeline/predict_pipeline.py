@@ -13,8 +13,8 @@ class PredictionPipeline:
         try:
             model_path = os.path.join(os.getcwd(), 'artifacts', 'model_trainer', 'model.pkl')
 
-            preprocessor_path =os.path.join('artifacts/data_transformation', 'preprocessor', 'preprocessor.pkl')
-            
+            preprocessor_path = os.path.join(os.getcwd(), 'artifacts', 'data_transformation', 'preprocessor', 'preprocessor.pkl')      
+
             model = load_object(file_path=model_path)
             preprocessor = load_object(file_path=preprocessor_path)
             data_scaled = preprocessor.transform(features)
@@ -35,7 +35,7 @@ class CustomData:
             custom_data_input_dict = {
                 "white_rating": [self.white_rating],
                 "black_rating": [self.black_rating],
-                "opening_name": [self.opening_name]
+                "opening_eco": [self.opening_name]
             }
             return pd.DataFrame(custom_data_input_dict)
         except Exception as e:
