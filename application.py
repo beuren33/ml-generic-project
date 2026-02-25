@@ -3,13 +3,13 @@ import pandas as pd
 import numpy as np
 from src.Pipeline.predict_pipeline import CustomData,PredictionPipeline
 
-aplication = Flask(__name__)
+application = Flask(__name__)
 
-@aplication.route('/')
+@application.route('/')
 def index():
     return render_template('index.html')
 
-@aplication.route('/predict',methods=['GET','POST'])
+@application.route('/predict',methods=['GET','POST'])
 def predict_datapoint():
     if request.method=='GET':
         return render_template('home.html')
@@ -32,5 +32,5 @@ def predict_datapoint():
     return render_template('home.html',prob_black=prob_black,prob_white=prob_white,prob_draw=prob_draw)
 
 if __name__=="__main__":
-    aplication.run(host="0.0.0.0",port=8000)
+    application.run(host="0.0.0.0",port=8000)
     
