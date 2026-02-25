@@ -3,7 +3,9 @@ import pandas as pd
 import numpy as np
 from src.Pipeline.predict_pipeline import CustomData,PredictionPipeline
 
-app = Flask(__name__)
+aplication = Flask(__name__)
+
+app = aplication
 
 @app.route('/')
 def index():
