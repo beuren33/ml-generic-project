@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Fazendo login no ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+  build:
+    commands:
+      - echo Build iniciado...
+      - docker build -t $ImageName -f ./Dockerfile .
+      - docker tag $ImageName:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ImageName:latest
+  post_build:
+    commands:
+      - echo Enviando imagem para o ECR...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ImageName:latest
+      - echo Criando arquivo de deploy para o Elastic Beanstalk...
+      - printf '{"AWSEBDockerrunVersion":"1","Image":{"Name":"%s.dkr.ecr.%s.amazonaws.com/%s:latest","Update":"true"},"Ports":[{"ContainerPort":5000}]}' $AWS_ACCOUNT_ID $AWS_DEFAULT_REGION $ImageName > Dockerrun.aws.json
+artifacts:
+  files:
+    - Dockerrun.aws.json
