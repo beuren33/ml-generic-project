@@ -40,7 +40,7 @@ class ModelTrainer:
                 "Gradient Boost": GradientBoostingClassifier(),
                 "Logistic Regression": LogisticRegression(),
                 "XGBoost": XGBClassifier(),
-                "MLP": MLPClassifier(),
+                #"MLP": MLPClassifier(),
                 "AdaBoost": AdaBoostClassifier()
             }
             params = {
