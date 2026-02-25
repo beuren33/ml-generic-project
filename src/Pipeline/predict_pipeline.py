@@ -11,7 +11,8 @@ class PredictionPipeline:
 
     def predict(self,features):
         try:
-            model_path =os.path.join('artifacts/model_trainer', 'model.pkl')
+            model_path = os.path.join(os.getcwd(), 'artifacts', 'model_trainer', 'model.pkl')
+
             preprocessor_path =os.path.join('artifacts/data_transformation', 'preprocessor', 'preprocessor.pkl')
             
             model = load_object(file_path=model_path)
@@ -24,10 +25,10 @@ class PredictionPipeline:
             raise ExceptionCustom(e,sys)
         
 class CustomData:
-    def __init__(self,white_rating:int,black_rating:int,opening_eco:str):
+    def __init__(self,white_rating:int,black_rating:int,opening_name:str):
         self.white_rating=white_rating
         self.black_rating=black_rating
-        self.opening_name=opening_eco
+        self.opening_name=opening_name
 
     def get_data_frame(self):
         try:

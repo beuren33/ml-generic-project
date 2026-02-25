@@ -17,7 +17,7 @@ def predict_datapoint():
         data=CustomData(
             white_rating=int(request.form.get('white_rating')),
             black_rating=int(request.form.get('black_rating')),
-            opening_eco=request.form.get('opening_eco'),
+            opening_name=request.form.get('opening_name'),
         )
 
     pred_df=data.get_data_frame()
