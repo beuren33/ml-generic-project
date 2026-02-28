@@ -11,15 +11,16 @@ class PredictionPipeline:
 
     def predict(self,features):
         try:
-            model_path = os.path.join(os.getcwd(), 'artifacts', 'model_trainer', 'model.pkl')
+            ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 
-            preprocessor_path = os.path.join(os.getcwd(), 'artifacts', 'data_transformation', 'preprocessor', 'preprocessor.pkl')      
+            model_path = os.path.join(ROOT, "artifacts/model_trainer/model.pkl")
+            preprocessor_path = os.path.join(ROOT, "artifacts/data_transformation/preprocessor/preprocessor.pkl")
 
-            model = load_object(file_path=model_path)
-            preprocessor = load_object(file_path=preprocessor_path)
-            data_scaled = preprocessor.transform(features)
-            preds_proba = model.predict_proba(data_scaled)
-            return preds_proba
+            model = load_object(model_path)
+            preprocessor = load_object(preprocessor_path)
+
+            transformed = preprocessor.transform(features)
+            return model.predict_proba(transformed)
 
         except Exception as e:
             raise ExceptionCustom(e,sys)
