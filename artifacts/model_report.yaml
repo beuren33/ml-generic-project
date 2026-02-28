@@ -1,29 +1,29 @@
 AdaBoost:
-  accuracy: 0.5985377201728149
+  accuracy: 0.6033565968760386
   best_params:
     learning_rate: 0.1
     n_estimators: 50
 Gradient Boost:
-  accuracy: 0.6156530408773679
+  accuracy: 0.6159853772017282
   best_params:
     learning_rate: 0.1
     max_depth: 3
     n_estimators: 100
 Logistic Regression:
-  accuracy: 0.6274509803921569
+  accuracy: 0.6181455633100698
   best_params:
-    C: 0.1
+    C: 1
     max_iter: 250
     solver: lbfgs
 Random Forest:
-  accuracy: 0.5874044533067464
+  accuracy: 0.5903954802259888
   best_params:
     max_depth: 20
     min_samples_split: 5
-    n_estimators: 100
+    n_estimators: 50
 XGBoost:
-  accuracy: 0.6216350947158524
+  accuracy: 0.6211365902293121
   best_params:
     learning_rate: 0.1
-    max_depth: 3
+    max_depth: 6
     n_estimators: 100

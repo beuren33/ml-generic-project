@@ -8,16 +8,14 @@ phases:
   build:
     commands:
       - echo Build iniciado...
-      - docker build -t $ImageName -f ./Dockerfile .
-      - docker tag $ImageName:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ImageName:latest
+      - docker build -t $IMAGE_NAME -f ./Dockerfile .
+      - docker tag $IMAGE_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_NAME:latest
   post_build:
     commands:
       - echo Enviando imagem para o ECR...
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ImageName:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_NAME:latest
       - echo Criando arquivo de deploy para o Elastic Beanstalk...
-      - printf '{"AWSEBDockerrunVersion":"1","Image":{"Name":"%s.dkr.ecr.%s.amazonaws.com/%s:latest","Update":"true"},"Ports":[{"ContainerPort":5000}]}' $AWS_ACCOUNT_ID $AWS_DEFAULT_REGION $ImageName > Dockerrun.aws.json
+      - printf '{"AWSEBDockerrunVersion":"1","Image":{"Name":"%s.dkr.ecr.%s.amazonaws.com/%s:latest","Update":"true"},"Ports":[{"ContainerPort":8000}]}' $AWS_ACCOUNT_ID $AWS_DEFAULT_REGION $IMAGE_NAME > Dockerrun.aws.json
 artifacts:
-  - application.py
-    - requirements.txt --no-cache-dir
-    - artifacts/**/*
-    - templates/**/*
+  files:
+    - Dockerrun.aws.json

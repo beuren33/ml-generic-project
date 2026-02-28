@@ -45,7 +45,7 @@ class ModelTrainer:
             }
             params = {
                 "Random Forest": {
-                    "n_estimators": [50, 100],
+                    "n_estimators": [50],
                     "max_depth": [10, 20],
                     "min_samples_split": [2, 5]
                 },
@@ -55,13 +55,13 @@ class ModelTrainer:
                     "max_depth": [3]
                 },
                 "Logistic Regression": {
-                    "C": [0.1, 1, 10],
+                    "C": [1],
                     "solver": ['lbfgs'], 
                     "max_iter": [250]
                 },
                 "XGBoost": {
-                    "n_estimators": [100, 200],
-                    "learning_rate": [0.1, 0.05],
+                    "n_estimators": [100],
+                    "learning_rate": [0.1],
                     "max_depth": [3, 6]
                 },
                 #"MLP": {

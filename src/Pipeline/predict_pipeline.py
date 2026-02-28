@@ -35,7 +35,7 @@ class CustomData:
             custom_data_input_dict = {
                 "white_rating": [self.white_rating],
                 "black_rating": [self.black_rating],
-                "opening_eco": [self.opening_name]
+                "opening_name": [self.opening_name]
             }
             return pd.DataFrame(custom_data_input_dict)
         except Exception as e:
