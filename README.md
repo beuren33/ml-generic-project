@@ -1,4 +1,4 @@
-# ML Generic Project
+### ML Generic Project
 
 ## Descrição
 
@@ -8,46 +8,10 @@ Este projeto é um pipeline genérico de Machine Learning que demonstra a criaç
 
 *   **Ingestão de Dados**: Processo para carregar dados brutos de um arquivo CSV.
 *   **Transformação de Dados**: Pré-processamento dos dados, incluindo codificação de variáveis categóricas e escalonamento de características.
-*   **Treinamento de Modelo**: Treinamento de um modelo de Machine Learning (XGBoost) para prever os resultados dos jogos.
+*   **Treinamento de Modelo**: Com a implementação do RandomSearchCV foi selecionado o modelo com a melhor performace.
 *   **Previsão em Tempo Real**: Aplicação web Flask para receber entradas do usuário e fornecer previsões instantâneas.
 *   **Estrutura Modular**: Código organizado em componentes, entidades e pipelines para facilitar a manutenção e escalabilidade.
 
-## Estrutura do Projeto
-
-```
-ml-generic-project/
-├── Dockerfile
-├── README.md
-├── application.py
-├── artifacts/
-│   ├── data_transformation/
-│   │   └── preprocessor/
-│   │       └── preprocessor.pkl
-│   └── model_trainer/
-│       └── model.pkl
-├── data/
-│   └── games.csv
-├── main.py
-├── noteboks/
-│   └── EDA.ipynb
-├── requirements.txt
-├── setup.py
-└── src/
-    ├── Components/
-    │   ├── data_ingestion.py
-    │   ├── data_transformation.py
-    │   └── model_trainer.py
-    ├── Entity/
-    │   ├── artifacts_config.py
-    │   └── config_entity.py
-    ├── Pipeline/
-    │   ├── predict_pipeline.py
-    │   └── train_pipeline.py
-    ├── constants/
-    ├── exception/
-    ├── logging/
-    └── utils/
-```
 
 ## Tecnologias Utilizadas
 
@@ -56,7 +20,6 @@ ml-generic-project/
 *   **Pandas**: Manipulação e análise de dados.
 *   **NumPy**: Computação numérica.
 *   **Scikit-learn**: Ferramentas para Machine Learning, incluindo pré-processamento.
-*   **XGBoost**: Algoritmo de Machine Learning para treinamento do modelo.
 *   **Dill**: Serialização de objetos Python.
 *   **PyYAML**: Leitura de arquivos de configuração.
 *   **Gunicorn**: Servidor WSGI para a aplicação Flask.
