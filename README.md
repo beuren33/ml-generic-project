@@ -73,7 +73,7 @@ A aplicação estará disponível em `http://127.0.0.1:8000` (ou `http://0.0.0.0
 
 ## Implantação (CI/CD)
 
-Este projeto utiliza um pipeline de Continuous Integration/Continuous Deployment (CI/CD) na AWS para automatizar a construção, teste e implantação da aplicação. A infraestrutura de CI/CD é composta pelos seguintes serviços:
+Este projeto utiliza um pipeline de Continuous Integration/Continuous Deployment na AWS para automatizar a construção, teste e implantação da aplicação. A infraestrutura de CI/CD é composta pelos seguintes serviços:
 
 *   **Docker**: A aplicação é conteinerizada usando Docker, garantindo um ambiente consistente em todas as etapas do pipeline. O `Dockerfile` define como a imagem da aplicação é construída.
 
@@ -91,14 +91,6 @@ Este projeto utiliza um pipeline de Continuous Integration/Continuous Deployment
 4.  O CodePipeline então implanta o artefato (`Dockerrun.aws.json`) no ambiente do Amazon Elastic Beanstalk.
 5.  O Elastic Beanstalk puxa a imagem Docker do Amazon ECR e implanta a aplicação nos servidores, tornando-a acessível.
 
-## Contribuição
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes. (Assumindo licença MIT, caso contrário, ajustar.)
-
----
 
 **Autor**: Matheus Beuren
